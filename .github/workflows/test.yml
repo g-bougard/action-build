@@ -28,24 +28,25 @@ jobs:
     needs:
       - unit
     strategy:
-      project:
-        - core
-        - core20
-        - core22
-        - core24
-      include:
-        - core: core
-          channel: 4.x/stable
-          runner: ubuntu-22.04
-        - core: core20
-          channel: 8.x/stable
-          runner: ubuntu-24.04
-        - core: core22
-          channel: stable
-          runner: ubuntu-26.04
-        - core: core24
-          channel: stable
-          runner: ubuntu-26.04
+      matrix:
+        project:
+          - core
+          - core20
+          - core22
+          - core24
+        include:
+          - core: core
+            channel: 4.x/stable
+            runner: ubuntu-22.04
+          - core: core20
+            channel: 8.x/stable
+            runner: ubuntu-24.04
+          - core: core22
+            channel: stable
+            runner: ubuntu-26.04
+          - core: core24
+            channel: stable
+            runner: ubuntu-26.04
     runs-on: ${{ matrix.runner }}
     continue-on-error: true
     steps:
