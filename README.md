@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/snapcore/action-build/actions"><img alt="snapcraft-build-action status" src="https://github.com/snapcore/action-build/workflows/build-test/badge.svg"></a>
+  <a href="https://github.com/g-bougard/action-build/actions"><img alt="snapcraft-build-action status" src="https://github.com/g-bougard/action-build/workflows/build-test/badge.svg"></a>
 </p>
 
 # Snapcraft Build Action
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: snapcore/action-build@v1
+    - uses: g-bougard/action-build@master
 ```
 
 This will install and configure LXD and Snapcraft, then invoke
@@ -26,7 +26,7 @@ the workflow:
 
 ```yaml
 ...
-    - uses: snapcore/action-build@v1
+    - uses: g-bougard/action-build@master
       id: snapcraft
     - uses: actions/upload-artifact@v3
       with:
@@ -57,7 +57,7 @@ parameter:
 
 ```yaml
 ...
-    - uses: snapcore/action-build@v1
+    - uses: g-bougard/action-build@master
       with:
         path: path-to-snapcraft-project
 ```
@@ -111,7 +111,7 @@ An example workflow with UA token stored as secret `UA_TOKEN`:
 
 ```yaml
 ...
-    - uses: snapcore/action-build@v1
+    - uses: g-bougard/action-build@master
       with:
         ua-token: ${{ secrets.UA_TOKEN }}
 ```
