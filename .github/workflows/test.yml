@@ -28,31 +28,30 @@ jobs:
     needs:
       - unit
     strategy:
-        project:
-          - core: core
-            channel: 4.x/stable
-            runner: ubuntu-22.04
-          - core: core20
-            channel: 8.x/stable
-            runner: ubuntu-24.04
-          - core: core22
-            channel: stable
-            runner: ubuntu-26.04
-          - core: core24
-            channel: stable
-            runner: ubuntu-26.04
-    runs-on: ${{ matrix.project.runner }}
+      - core: core
+        channel: 4.x/stable
+        runner: ubuntu-22.04
+      - core: core20
+        channel: 8.x/stable
+        runner: ubuntu-24.04
+      - core: core22
+        channel: stable
+        runner: ubuntu-26.04
+      - core: core24
+        channel: stable
+        runner: ubuntu-26.04
+    runs-on: ${{ matrix.runner }}
     continue-on-error: true
     steps:
     - uses: actions/checkout@v6
     - uses: ./
       id: snapcraft
       with:
-        path: './test-projects/${{ matrix.project.core }}'
-        snapcraft-channel: ${{ matrix.project.channel }}
+        path: './test-projects/${{ matrix.core }}'
+        snapcraft-channel: ${{ matrix.channel }}
     - uses: actions/upload-artifact@v7
       with:
-        name: 'snap-${{ matrix.project.core }}'
+        name: 'snap-${{ matrix.core }}'
         path: ${{ steps.snapcraft.outputs.snap}}
         compression-level: 0
         retention-days: 7
