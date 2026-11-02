@@ -29,8 +29,10 @@ jobs:
       - unit
     strategy:
       matrix:
-        channel: stable
-        runner: ubuntu-latest
+        channel:
+          - stable
+        runner:
+          - ubuntu-latest
         project:
           - core
           - core20
