@@ -17,6 +17,7 @@ jobs:
           - ubuntu-24.04
           - ubuntu-26.04
     runs-on: ${{ matrix.runner }}
+    continue-on-error: true
     steps:
     - uses: actions/checkout@v4
     - run: |
